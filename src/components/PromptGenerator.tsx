@@ -73,7 +73,7 @@ const PromptGenerator = () => {
             className="text-4xl md:text-5xl text-foreground text-glow-strong mb-2"
             style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(16px, 4vw, 28px)" }}
           >
-            VIBE CODER v1.0
+            VIBE GENERATOR v2.0
           </h1>
           <p className="text-muted-foreground text-glow text-lg">
             ═══ BUILD PROMPT GENERATOR ═══
