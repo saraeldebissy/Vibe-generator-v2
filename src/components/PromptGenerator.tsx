@@ -73,7 +73,7 @@ const PromptGenerator = () => {
             className="text-4xl md:text-5xl text-foreground text-glow-strong mb-2"
             style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(16px, 4vw, 28px)" }}
           >
-            VIBE CODER v1.0
+            VIBE GENERATOR v2.0
           </h1>
           <p className="text-muted-foreground text-glow text-lg">
             ═══ BUILD PROMPT GENERATOR ═══
@@ -213,7 +213,7 @@ const PromptGenerator = () => {
         {/* Footer */}
         <div className="text-center mt-12 text-muted-foreground text-xs">
           <p>═══════════════════════════════════════</p>
-          <p className="mt-1">VIBE CODER OS (C) 2026 — ALL VIBES RESERVED</p>
+          <p className="mt-1">VIBE GENERATOR OS (C) 2026 — ALL VIBES RESERVED</p>
           <p>640K OUGHT TO BE ENOUGH FOR ANYBODY</p>
         </div>
       </div>
