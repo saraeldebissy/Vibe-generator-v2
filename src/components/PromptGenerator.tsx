@@ -213,7 +213,7 @@ const PromptGenerator = () => {
         {/* Footer */}
         <div className="text-center mt-12 text-muted-foreground text-xs">
           <p>═══════════════════════════════════════</p>
-          <p className="mt-1">VIBE CODER OS (C) 2026 — ALL VIBES RESERVED</p>
+          <p className="mt-1">VIBE GENERATOR OS (C) 2026 — ALL VIBES RESERVED</p>
           <p>640K OUGHT TO BE ENOUGH FOR ANYBODY</p>
         </div>
       </div>
