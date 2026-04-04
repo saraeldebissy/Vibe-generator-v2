@@ -1,96 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 120 10% 6%;
+    --foreground: 120 100% 65%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 120 10% 8%;
+    --card-foreground: 120 100% 65%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 120 10% 8%;
+    --popover-foreground: 120 100% 65%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 120 10% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 120 20% 14%;
+    --secondary-foreground: 120 100% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 120 10% 12%;
+    --muted-foreground: 120 40% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 120 10% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 40% 20%;
+    --input: 120 40% 20%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0px;
 
-    --sidebar-background: 0 0% 98%;
+    --crt-glow: 120 100% 50%;
+    --amber: 39 100% 50%;
+    --amber-foreground: 39 100% 10%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 120 10% 6%;
+    --sidebar-foreground: 120 100% 65%;
+    --sidebar-primary: 120 100% 50%;
+    --sidebar-primary-foreground: 120 10% 6%;
+    --sidebar-accent: 120 20% 14%;
+    --sidebar-accent-foreground: 120 100% 65%;
+    --sidebar-border: 120 40% 20%;
+    --sidebar-ring: 120 100% 50%;
   }
 }
 
@@ -101,5 +58,101 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
   }
+}
+
+/* CRT Scanline overlay */
+.crt-scanlines::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+}
+
+/* CRT flicker */
+.crt-scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 49;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 8px hsl(var(--crt-glow) / 0.6), 0 0 20px hsl(var(--crt-glow) / 0.3);
+}
+
+.text-glow-strong {
+  text-shadow: 0 0 10px hsl(var(--crt-glow) / 0.8), 0 0 30px hsl(var(--crt-glow) / 0.5), 0 0 60px hsl(var(--crt-glow) / 0.2);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 8px hsl(var(--amber) / 0.6), 0 0 20px hsl(var(--amber) / 0.3);
+}
+
+/* Box glow */
+.box-glow {
+  box-shadow: 0 0 8px hsl(var(--crt-glow) / 0.3), inset 0 0 8px hsl(var(--crt-glow) / 0.05);
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Boot-up animation */
+@keyframes bootUp {
+  0% { opacity: 0; transform: scaleY(0.01); }
+  40% { opacity: 1; transform: scaleY(0.01); }
+  60% { transform: scaleY(1); }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.animate-boot {
+  animation: bootUp 1.2s ease-out forwards;
+}
+
+/* Prompt reveal */
+@keyframes typeReveal {
+  from { max-height: 0; opacity: 0; }
+  to { max-height: 500px; opacity: 1; }
+}
+
+.animate-type-reveal {
+  animation: typeReveal 0.8s ease-out forwards;
+  overflow: hidden;
+}
+
+/* Flicker */
+@keyframes flicker {
+  0%, 97%, 100% { opacity: 1; }
+  98% { opacity: 0.8; }
+  99% { opacity: 0.9; }
+}
+
+.animate-flicker {
+  animation: flicker 4s infinite;
 }
