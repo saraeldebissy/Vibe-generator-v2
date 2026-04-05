@@ -234,9 +234,8 @@ const PromptGenerator = () => {
             </button>
           </div>
 
-          {/* Prompt card — top-aligned on mobile, centered on desktop */}
-          <div className="flex-1 flex flex-col justify-start md:justify-center">
-            <div className="border-2 border-primary box-glow p-4 animate-type-reveal">
+          {/* Prompt card */}
+          <div className="border-2 border-primary box-glow p-4 animate-type-reveal">
               <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                 <p className="text-muted-foreground text-sm">┌─── MISSION BRIEFING ───┐</p>
                 <span className={`text-xs px-2 py-0.5 border border-border ${difficultyColor(getDifficulty(generatedPrompt.time, generatedPrompt.level))}`}>
@@ -263,10 +262,9 @@ const PromptGenerator = () => {
                 </button>
               </div>
             </div>
-          </div>
 
           {/* Footer */}
-          <div className="text-center mt-3 text-muted-foreground text-xs">
+          <div className="text-center mt-auto pt-3 text-muted-foreground text-xs">
             <p>═══════════════════════════════════════</p>
             <p>VIBE GENERATOR OS (C) 2026 — ALL VIBES RESERVED</p>
           </div>
