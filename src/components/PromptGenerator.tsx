@@ -97,7 +97,7 @@ const PromptGenerator = () => {
 
       {/* ── FILTERS SCREEN ── */}
       {view === 'filters' && (
-        <div className="flex flex-col h-full px-6 pt-8 pb-4 overflow-y-auto">
+        <div className="flex flex-col h-full px-3 pt-4 pb-3 md:px-6 md:pt-8 md:pb-4 overflow-y-auto">
           {/* Header */}
           <div className="text-center mb-4">
             <h1
@@ -222,9 +222,9 @@ const PromptGenerator = () => {
 
       {/* ── RESULT SCREEN ── */}
       {view === 'result' && generatedPrompt && (
-        <div className="flex flex-col h-full px-6 py-4">
+        <div className="flex flex-col h-full px-3 py-3 md:px-6 md:py-4">
           {/* Back button */}
-          <div className="mb-4">
+          <div className="mb-3">
             <button
               onClick={() => { setView('filters'); setGeneratedPrompt(null); }}
               className="text-muted-foreground hover:text-foreground text-sm text-glow transition-all"
@@ -234,8 +234,8 @@ const PromptGenerator = () => {
             </button>
           </div>
 
-          {/* Prompt card — centered, fills remaining space */}
-          <div className="flex-1 flex flex-col justify-center">
+          {/* Prompt card — top-aligned on mobile, centered on desktop */}
+          <div className="flex-1 flex flex-col justify-start md:justify-center">
             <div className="border-2 border-primary box-glow p-4 animate-type-reveal">
               <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
                 <p className="text-muted-foreground text-sm">┌─── MISSION BRIEFING ───┐</p>
