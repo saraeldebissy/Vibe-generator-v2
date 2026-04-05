@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    --background: 120 10% 6%;
-    --foreground: 120 100% 65%;
+    --background: 140 25% 7%;
+    --foreground: 140 100% 60%;
 
-    --card: 120 10% 8%;
-    --card-foreground: 120 100% 65%;
+    --card: 140 22% 9%;
+    --card-foreground: 140 100% 60%;
 
-    --popover: 120 10% 8%;
-    --popover-foreground: 120 100% 65%;
+    --popover: 140 22% 9%;
+    --popover-foreground: 140 100% 60%;
 
-    --primary: 120 100% 50%;
-    --primary-foreground: 120 10% 6%;
+    --primary: 140 100% 60%;
+    --primary-foreground: 140 25% 7%;
 
-    --secondary: 120 20% 14%;
-    --secondary-foreground: 120 100% 65%;
+    --secondary: 140 20% 13%;
+    --secondary-foreground: 140 100% 60%;
 
-    --muted: 120 10% 12%;
-    --muted-foreground: 120 40% 40%;
+    --muted: 140 15% 11%;
+    --muted-foreground: 140 60% 46%;
 
-    --accent: 120 100% 50%;
-    --accent-foreground: 120 10% 6%;
+    --accent: 140 100% 60%;
+    --accent-foreground: 140 25% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 120 40% 20%;
-    --input: 120 40% 20%;
-    --ring: 120 100% 50%;
+    --border: 140 40% 18%;
+    --input: 140 40% 18%;
+    --ring: 140 100% 60%;
 
     --radius: 0px;
 
-    --crt-glow: 120 100% 50%;
-    --amber: 39 100% 50%;
-    --amber-foreground: 39 100% 10%;
+    --crt-glow: 140 100% 60%;
+    --amber: 140 100% 60%;
+    --amber-foreground: 140 25% 7%;
 
-    --sidebar-background: 120 10% 6%;
-    --sidebar-foreground: 120 100% 65%;
-    --sidebar-primary: 120 100% 50%;
-    --sidebar-primary-foreground: 120 10% 6%;
-    --sidebar-accent: 120 20% 14%;
-    --sidebar-accent-foreground: 120 100% 65%;
-    --sidebar-border: 120 40% 20%;
-    --sidebar-ring: 120 100% 50%;
+    --sidebar-background: 140 25% 7%;
+    --sidebar-foreground: 140 100% 60%;
+    --sidebar-primary: 140 100% 60%;
+    --sidebar-primary-foreground: 140 25% 7%;
+    --sidebar-accent: 140 20% 13%;
+    --sidebar-accent-foreground: 140 100% 60%;
+    --sidebar-border: 140 40% 18%;
+    --sidebar-ring: 140 100% 60%;
   }
 }
 
@@ -61,6 +61,104 @@
     font-family: 'VT323', monospace;
     font-size: 18px;
   }
+}
+
+/* Monitor frame */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.monitor-outer {
+  width: min(100vh, 100vw);
+  height: min(100vh, 100vw);
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, #d6d6c8 0%, #c2c2b2 30%, #b0b0a0 60%, #a8a89a 100%);
+  border-radius: 16px;
+  padding: 28px 28px 48px 28px;
+  box-shadow:
+    0 0 0 1px #888,
+    0 12px 48px rgba(0,0,0,0.85),
+    inset 0 3px 6px rgba(255,255,255,0.5),
+    inset 0 -3px 6px rgba(0,0,0,0.3),
+    inset 3px 0 6px rgba(255,255,255,0.2),
+    inset -3px 0 6px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Bottom vent slots */
+.monitor-outer::after {
+  content: '';
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #999 0px, #999 6px,
+    transparent 6px, transparent 10px
+  );
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* Screen bezel inset ring */
+.monitor-screen-bezel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow:
+    inset 0 4px 12px rgba(0,0,0,0.9),
+    inset 0 -2px 8px rgba(0,0,0,0.6),
+    inset 4px 0 10px rgba(0,0,0,0.7),
+    inset -4px 0 10px rgba(0,0,0,0.7);
+}
+
+.monitor-screen {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px #0a0a0a;
+}
+
+/* Screen glare — simulates CRT convex curve */
+.monitor-screen::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+  z-index: 60;
+  border-radius: 10px;
 }
 
 /* CRT Scanline overlay */
@@ -144,6 +242,64 @@
 .animate-type-reveal {
   animation: typeReveal 0.8s ease-out forwards;
   overflow: hidden;
+}
+
+/* Hide all scrollbars inside monitor */
+.monitor-outer *,
+.monitor-outer {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.monitor-outer *::-webkit-scrollbar,
+.monitor-outer::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* ── Mobile: phone frame ── */
+@media (max-width: 768px) {
+  .monitor-outer {
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    border-radius: 44px;
+    padding: 58px 12px 30px 12px;
+  }
+
+  /* Dynamic island pill */
+  .monitor-outer::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 126px;
+    height: 30px;
+    background: #111;
+    border-radius: 15px;
+    z-index: 10;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.9);
+  }
+
+  /* Home indicator instead of vents */
+  .monitor-outer::after {
+    bottom: 10px;
+    width: 130px;
+    height: 5px;
+    background: #888;
+    border-radius: 3px;
+    opacity: 0.6;
+  }
+
+  .monitor-screen-bezel {
+    border-radius: 8px;
+  }
+
+  .monitor-screen {
+    border-radius: 6px;
+  }
 }
 
 /* Flicker */
